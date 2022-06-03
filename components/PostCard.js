@@ -2,6 +2,24 @@ import Link from "next/link";
 import parse from "html-react-parser";
 import { gql } from "@apollo/client";
 
+/**
+ * Post is the type of each post node in the schema.
+ * You need to use CTRL+Click over the query on the GraphiQL IDE.
+ */
+export const POST_CARD_FIELDS = gql`
+  fragment PostCardFields on Post {
+    title
+    excerpt
+    uri
+    featuredImage {
+      node {
+        sourceUrl
+        altText
+      }
+    }
+  }
+`;
+
 export default function PostCard({ post }) {
   const { title, excerpt, uri, featuredImage } = post;
 
